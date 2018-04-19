@@ -180,9 +180,48 @@ public:
         return true;
     }
 
-    bool Read(std::string& Data)
+    bool Read(std::string& Data, uint32_t Size)
     {
+        return Read((unsigned char*)&Data[0], Size);
+    }
 
+    bool Read(unsigned char* Data, uint32_t Size) override
+    {
+        if(Handle == INVALID_HANDLE_VALUE || !Data || Size == 0)
+        {
+            return false;
+        }
+
+        DWORD begin = GetTickCount();
+        DWORD feedback = 0;
+
+        DWORD len = (DWORD)Size;
+
+        int attempts = 3;
+        while(len && (attempts || (GetTickCount() - begin) < (DWORD)TIMEOUT / 3))
+        {
+            if(attempts) attempts--;
+
+            if(!ReadFile(Handle, Data, len, &feedback, NULL))
+            {
+                CloseHandle(Handle);
+                Handle = INVALID_HANDLE_VALUE;
+                return false;
+            }
+
+            assert(feedback <= len);
+            len -= feedback;
+            Data += feedback;
+        }
+
+        if(len)
+        {
+            CloseHandle(Handle);
+            Handle = INVALID_HANDLE_VALUE;
+            return false;
+        }
+
+        return true;
     }
 
     ~SerialPortWindows() override
