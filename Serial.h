@@ -15,7 +15,7 @@ public:
     virtual bool Write(std::vector<unsigned char>&& Data) { return false; }
     virtual bool Write(std::string& Data) { return false; }
     virtual bool Write(std::string&& Data) { return false; }
-    virtual bool Write(const char* Data) { return false; }
+    virtual bool Write(const char* Data, uint32_t Size) { return false; }
 
     virtual bool Read(std::vector<unsigned char>& Data) { return false; }
     virtual bool Read(std::string& Data, uint32_t Size) { return false; }

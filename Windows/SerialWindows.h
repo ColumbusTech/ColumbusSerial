@@ -134,9 +134,9 @@ public:
         WriteSerialData(Handle, Data.c_str(), Data.size());
     }
 
-    bool Write(const char* Data) override
+    bool Write(const char* Data, uint32_t Size) override
     {
-        WriteSerialData(Handle, Data, strlen(Data));
+        WriteSerialData(Handle, Data, Size);
     }
 
     bool Read(std::vector<unsigned char>& Data) override
