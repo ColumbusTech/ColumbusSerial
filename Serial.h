@@ -32,7 +32,9 @@ public:
 	~SerialPort() = default;
 };
 
-#if defined(__linux)
+#if defined(WIN32) || defined(WIN64)
+	#include "./Windows/Windows.inl"
+#elif defined(__linux)
 	#include "./Linux/Linux.inl"
 #endif
 

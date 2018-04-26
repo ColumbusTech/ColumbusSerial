@@ -37,14 +37,18 @@ class SerialPort::Impl
 private:
 	int TTY;
 public:
-	bool IsOK(const SerialPort& SP) const
+	Impl() :
+		TTY(-1)
+		{}
+
+	bool IsOK() const
 	{
 		return TTY >= 0;
 	}
 
-	bool Connect(const SerialPort& SP, std::string Port, int Baudrate)
+	bool Connect(std::string Port, int Baudrate)
 	{
-		Disconnect(SP);
+		Disconnect();
 
 		TTY = open(Port.c_str(), O_RDWR| O_NONBLOCK | O_NDELAY);
 		if (TTY < 0)
@@ -88,7 +92,7 @@ public:
 		return true;
 	}
 
-	bool Disconnect(const SerialPort& SP)
+	bool Disconnect()
 	{
 		if (TTY >= 0)
 		{
@@ -146,12 +150,14 @@ public:
 	{
 		return ReadSerialData(TTY, Data, Size);
 	}
+
+	~Impl() { Disconnect(); }
 };
 
 SerialPort::SerialPort() : pImpl{ std::make_unique<Impl>() } {}
-bool SerialPort::IsOK() const { return pImpl->IsOK(*this); }
-bool SerialPort::Connect(std::string Port, int Baudrate) { return pImpl->Connect(*this, Port, Baudrate); }
-void SerialPort::Disconnect() { pImpl->Disconnect(*this); }
+bool SerialPort::IsOK() const { return pImpl->IsOK(); }
+bool SerialPort::Connect(std::string Port, int Baudrate) { return pImpl->Connect(Port, Baudrate); }
+void SerialPort::Disconnect() { pImpl->Disconnect(); }
 
 bool SerialPort::Write(std::vector<unsigned char>& Data) { return pImpl->Write(Data); }
 bool SerialPort::Write(std::vector<unsigned char>&& Data) { return pImpl->Write(Data); }
