@@ -154,21 +154,6 @@ public:
 	~Impl() { Disconnect(); }
 };
 
-SerialPort::SerialPort() : pImpl{ std::make_unique<Impl>() } {}
-bool SerialPort::IsOK() const { return pImpl->IsOK(); }
-bool SerialPort::Connect(std::string Port, int Baudrate) { return pImpl->Connect(Port, Baudrate); }
-void SerialPort::Disconnect() { pImpl->Disconnect(); }
-
-bool SerialPort::Write(std::vector<unsigned char>& Data) { return pImpl->Write(Data); }
-bool SerialPort::Write(std::vector<unsigned char>&& Data) { return pImpl->Write(Data); }
-bool SerialPort::Write(std::string& Data) { return pImpl->Write(Data); }
-bool SerialPort::Write(std::string&& Data) { return pImpl->Write(Data); }
-bool SerialPort::Write(const char* Data, uint32_t Size) { return pImpl->Write(Data, Size); }
-
-bool SerialPort::Read(std::vector<unsigned char>& Data) { return pImpl->Read(Data); }
-bool SerialPort::Read(std::string& Data, uint32_t Size) { return pImpl->Read(Data, Size); }
-bool SerialPort::Read(char* Data, uint32_t Size) { return pImpl->Read(Data, Size); }
-
 
 
 

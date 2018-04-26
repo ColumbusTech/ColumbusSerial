@@ -38,6 +38,21 @@ public:
 	#include "./Linux/Linux.inl"
 #endif
 
+inline SerialPort::SerialPort() : pImpl{ std::make_unique<Impl>() } {}
+inline bool SerialPort::IsOK() const { return pImpl->IsOK(); }
+inline bool SerialPort::Connect(std::string Port, int Baudrate) { return pImpl->Connect(Port, Baudrate); }
+inline void SerialPort::Disconnect() { pImpl->Disconnect(); }
+
+inline bool SerialPort::Write(std::vector<unsigned char>& Data) { return pImpl->Write(Data); }
+inline bool SerialPort::Write(std::vector<unsigned char>&& Data) { return pImpl->Write(Data); }
+inline bool SerialPort::Write(std::string& Data) { return pImpl->Write(Data); }
+inline bool SerialPort::Write(std::string&& Data) { return pImpl->Write(Data); }
+inline bool SerialPort::Write(const char* Data, uint32_t Size) { return pImpl->Write(Data, Size); }
+
+inline bool SerialPort::Read(std::vector<unsigned char>& Data) { return pImpl->Read(Data); }
+inline bool SerialPort::Read(std::string& Data, uint32_t Size) { return pImpl->Read(Data, Size); }
+inline bool SerialPort::Read(char* Data, uint32_t Size) { return pImpl->Read(Data, Size); }
+
 
 
 
