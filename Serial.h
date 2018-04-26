@@ -4,29 +4,37 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <memory>
 
 class SerialPort
 {
+private:
+	class Impl;
+	std::unique_ptr<Impl> pImpl;
 public:
-    SerialPort() {}
+	SerialPort();
 
-    virtual bool IsOK() const { return false; }
+	bool IsOK() const;
 
-    virtual bool Connect(std::string Port, int Baudrate) { return false; }
-    virtual void Disconnect() {}
+	bool Connect(std::string Port, int Baudrate);
+	void Disconnect();
 
-    virtual bool Write(std::vector<unsigned char>& Data) { return false; }
-    virtual bool Write(std::vector<unsigned char>&& Data) { return false; }
-    virtual bool Write(std::string& Data) { return false; }
-    virtual bool Write(std::string&& Data) { return false; }
-    virtual bool Write(const char* Data, uint32_t Size) { return false; }
+	bool Write(std::vector<unsigned char>& Data);
+	bool Write(std::vector<unsigned char>&& Data);
+	bool Write(std::string& Data);
+	bool Write(std::string&& Data);
+	bool Write(const char* Data, uint32_t Size);
 
-    virtual bool Read(std::vector<unsigned char>& Data) { return false; }
-    virtual bool Read(std::string& Data, uint32_t Size) { return false; }
-    virtual bool Read(char* Data, uint32_t Size) { return false; }
+	bool Read(std::vector<unsigned char>& Data);
+	bool Read(std::string& Data, uint32_t Size);
+	bool Read(char* Data, uint32_t Size);
 
-    virtual ~SerialPort() {}
+	~SerialPort() = default;
 };
+
+#if defined(__linux)
+	#include "./Linux/Linux.inl"
+#endif
 
 
 

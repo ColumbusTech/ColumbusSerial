@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Serial.h"
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
@@ -33,20 +32,20 @@ namespace
 	}
 }
 
-class SerialPortLinux : public SerialPort
+class SerialPort::Impl
 {
 private:
 	int TTY;
 public:
-	SerialPortLinux() :
-		TTY(-1)
-		{ }
-
-	bool IsOK() const override { return TTY >= 0; }
-
-	bool Connect(std::string Port, int Baudrate) override
+	bool IsOK(const SerialPort& SP) const
 	{
-		Disconnect();
+		return TTY >= 0;
+	}
+
+	bool Connect(const SerialPort& SP, std::string Port, int Baudrate)
+	{
+		Disconnect(SP);
+
 		TTY = open(Port.c_str(), O_RDWR| O_NONBLOCK | O_NDELAY);
 		if (TTY < 0)
 		{
@@ -89,7 +88,7 @@ public:
 		return true;
 	}
 
-	void Disconnect() override
+	bool Disconnect(const SerialPort& SP)
 	{
 		if (TTY >= 0)
 		{
@@ -98,32 +97,32 @@ public:
 		}
 	}
 
-	bool Write(std::vector<unsigned char>& Data) override
+	bool Write(std::vector<unsigned char>& Data)
 	{
 		return WriteSerialData(TTY, (const char*)Data.data(), Data.size());
 	}
 
-	bool Write(std::vector<unsigned char>&& Data) override
+	bool Write(std::vector<unsigned char>&& Data)
 	{
 		return WriteSerialData(TTY, (const char*)Data.data(), Data.size());
 	}
 
-	bool Write(std::string& Data) override
+	bool Write(std::string& Data)
 	{
 		return WriteSerialData(TTY, Data.c_str(), Data.size());
 	}
 
-	bool Write(std::string&& Data) override
+	bool Write(std::string&& Data)
 	{
 		return WriteSerialData(TTY, Data.c_str(), Data.size());
 	}
 
-	bool Write(const char* Data, uint32_t Size) override
+	bool Write(const char* Data, uint32_t Size)
 	{
 		return WriteSerialData(TTY, Data, Size);
 	}
 
-	bool Read(std::vector<unsigned char>& Data) override
+	bool Read(std::vector<unsigned char>& Data)
 	{
 		if (Data.size() == 0)
 		{
@@ -133,7 +132,7 @@ public:
 		return ReadSerialData(TTY, (char*)&Data[0], Data.size());
 	}
 
-	bool Read(std::string& Data, uint32_t Size) override
+	bool Read(std::string& Data, uint32_t Size)
 	{
 		if (Data.size() == 0)
 		{
@@ -143,21 +142,26 @@ public:
 		return ReadSerialData(TTY, &Data[0], Data.size());
 	}
 
-	bool Read(char* Data, uint32_t Size) override
+	bool Read(char* Data, uint32_t Size)
 	{
 		return ReadSerialData(TTY, Data, Size);
 	}
-
-	~SerialPortLinux() override { Disconnect(); }
 };
 
+SerialPort::SerialPort() : pImpl{ std::make_unique<Impl>() } {}
+bool SerialPort::IsOK() const { return pImpl->IsOK(*this); }
+bool SerialPort::Connect(std::string Port, int Baudrate) { return pImpl->Connect(*this, Port, Baudrate); }
+void SerialPort::Disconnect() { pImpl->Disconnect(*this); }
 
+bool SerialPort::Write(std::vector<unsigned char>& Data) { return pImpl->Write(Data); }
+bool SerialPort::Write(std::vector<unsigned char>&& Data) { return pImpl->Write(Data); }
+bool SerialPort::Write(std::string& Data) { return pImpl->Write(Data); }
+bool SerialPort::Write(std::string&& Data) { return pImpl->Write(Data); }
+bool SerialPort::Write(const char* Data, uint32_t Size) { return pImpl->Write(Data, Size); }
 
-
-
-
-
-
+bool SerialPort::Read(std::vector<unsigned char>& Data) { return pImpl->Read(Data); }
+bool SerialPort::Read(std::string& Data, uint32_t Size) { return pImpl->Read(Data, Size); }
+bool SerialPort::Read(char* Data, uint32_t Size) { return pImpl->Read(Data, Size); }
 
 
 
