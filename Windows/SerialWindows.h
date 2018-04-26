@@ -42,7 +42,7 @@ public:
         return Handle != INVALID_HANDLE_VALUE;
     }
 
-    bool Connect(const std::string& Port, int Baudrate) override
+    bool Connect(std::string Port, int Baudrate) override
     {
         Disconnect();
 
@@ -71,8 +71,8 @@ public:
         }
 
         DCB ComDCM;
+        memset(&ComDCM, 0, sizeof(ComDCM));
 
-        memset(&ComDCM,0,sizeof(ComDCM));
         ComDCM.DCBlength = sizeof(DCB);
         GetCommState(Handle, &ComDCM);
         ComDCM.BaudRate = DWORD(Baudrate);
@@ -116,27 +116,27 @@ public:
 
     bool Write(std::vector<unsigned char>& Data) override
     {
-        WriteSerialData(Handle, (const char*)Data.data(), Data.size());
+        return WriteSerialData(Handle, (const char*)Data.data(), Data.size());
     }
 
     bool Write(std::vector<unsigned char>&& Data) override
     {
-        WriteSerialData(Handle, (const char*)Data.data(), Data.size());
+        return WriteSerialData(Handle, (const char*)Data.data(), Data.size());
     }
 
     bool Write(std::string& Data) override
     {
-        WriteSerialData(Handle, Data.c_str(), Data.size());
+        return WriteSerialData(Handle, Data.c_str(), Data.size());
     }
 
     bool Write(std::string&& Data) override
     {
-        WriteSerialData(Handle, Data.c_str(), Data.size());
+        return WriteSerialData(Handle, Data.c_str(), Data.size());
     }
 
     bool Write(const char* Data, uint32_t Size) override
     {
-        WriteSerialData(Handle, Data, Size);
+        return WriteSerialData(Handle, Data, Size);
     }
 
     bool Read(std::vector<unsigned char>& Data) override
@@ -182,10 +182,10 @@ public:
 
     bool Read(std::string& Data, uint32_t Size)
     {
-        return Read((unsigned char*)&Data[0], Size);
+        return Read((char*)&Data[0], Size);
     }
 
-    bool Read(unsigned char* Data, uint32_t Size) override
+    bool Read(char* Data, uint32_t Size) override
     {
         if(Handle == INVALID_HANDLE_VALUE || !Data || Size == 0)
         {
