@@ -1,0 +1,219 @@
+\hypertarget{cuserial_8h}{}\doxysection{cuserial.\+h File Reference}
+\label{cuserial_8h}\index{cuserial.h@{cuserial.h}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Serial port connection handle. It\textquotesingle{}s self-\/contained and have all it needs without any global state. Configure it {\bfseries{before}} calling \mbox{\hyperlink{cuserial_8h_a6fed9d44150d8d87f67e7a33606676a9}{cuserial\+\_\+connect()}}. Then it will contain information about connection representing connection handle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cuserial_8h_ad037bc6a96c4f2d87dda4c90dbe130e8}\label{cuserial_8h_ad037bc6a96c4f2d87dda4c90dbe130e8}} 
+\#define {\bfseries C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+M\+AX}~64
+\item 
+\mbox{\Hypertarget{cuserial_8h_a0caec06a0632a4ac656b601965d36d20}\label{cuserial_8h_a0caec06a0632a4ac656b601965d36d20}} 
+\#define {\bfseries \+\_\+\+\_\+\+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+S\+E\+T\+\_\+\+S\+T\+A\+T\+US}(s)~if (status != N\+U\+LL) $\ast$status = s;
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8}{cuserial\+\_\+baudrate\+\_\+t}} \{ \newline
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a1f13fe5b6351636e54d4499e2cfa83d0}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+1200}} = 1200, 
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a49eefb27a0a474138d3a5385ff59a577}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+2400}} = 2400, 
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a78715dec59ea65ac2580a2a4d12fef53}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+4800}} = 4800, 
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+9600}} = 9600, 
+\newline
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ae16c182d906a4adfe4bd47db189ca946}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+19200}} = 19200, 
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a2bf907b7cc99a0980d7b5bf06612e08b}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+38400}} = 38400, 
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a8c92f1e77a44ef20263ae5e22202a715}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+57600}} = 57600, 
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a86039cb38ffecda75c7ca2b52f04213c}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+115200}} = 115200
+ \}
+\begin{DoxyCompactList}\small\item\em Baud rates aliases for safety, prefer using this instead of raw integer number. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648}{cuserial\+\_\+status\+\_\+t}} \{ \mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648a5b3e607e56e018c5226de9f9edfdc633}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+N\+O\+NE}}, 
+\mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648af59df160258fe79f3b80de9e8f5cc007}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+N\+U\+L\+L\+\_\+\+A\+R\+G\+U\+M\+E\+NT}}, 
+\mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648a4c75894522e3c1d8f2c0eab524f9c3d2}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+O\+RT}}, 
+\mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648aa095bfda29aa178c45e8cf9f5af425a8}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+OK}}
+ \}
+\begin{DoxyCompactList}\small\item\em Status/error codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{cuserial_8h_a6fed9d44150d8d87f67e7a33606676a9}{cuserial\+\_\+connect}} (struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}} $\ast$serial, enum \mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648}{cuserial\+\_\+status\+\_\+t}} $\ast$status)
+\begin{DoxyCompactList}\small\item\em Establish serial port connection. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cuserial_8h_a9e55dd102961685a7fd535108711a843}\label{cuserial_8h_a9e55dd102961685a7fd535108711a843}} 
+void \mbox{\hyperlink{cuserial_8h_a9e55dd102961685a7fd535108711a843}{cuserial\+\_\+disconnect}} (struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}} $\ast$serial)
+\begin{DoxyCompactList}\small\item\em Disconnect serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cuserial_8h_a1fc8432513594456a45e7f1b857c1816}{cuserial\+\_\+write}} (struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}} $\ast$serial, const void $\ast$bytes, int size)
+\begin{DoxyCompactList}\small\item\em Write data to serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cuserial_8h_ae296c4140ec00d56d45403dfeed96b2b}{cuserial\+\_\+read}} (struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}} $\ast$serial, void $\ast$bytes, int size)
+\begin{DoxyCompactList}\small\item\em Read data from serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cuserial_8h_ab539d7e06dfea8578861193fa1a6f0ef}{cuserial\+\_\+check\+\_\+baudrate}} (int baudrate)
+\begin{DoxyCompactList}\small\item\em Checks if baudrate is supported (one of the cuserial\+\_\+baudrate\+\_\+t enum) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cuserial_8h_adf669d2573ab8a214f5d7b264ee8e64d}{cuserial\+\_\+check\+\_\+port}} (char port\mbox{[}C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+M\+AX\mbox{]})
+\begin{DoxyCompactList}\small\item\em Checks if specified port is avaliable to connect. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8}} 
+\index{cuserial.h@{cuserial.h}!cuserial\_baudrate\_t@{cuserial\_baudrate\_t}}
+\index{cuserial\_baudrate\_t@{cuserial\_baudrate\_t}!cuserial.h@{cuserial.h}}
+\doxysubsubsection{\texorpdfstring{cuserial\_baudrate\_t}{cuserial\_baudrate\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8}{cuserial\+\_\+baudrate\+\_\+t}}}
+
+
+
+Baud rates aliases for safety, prefer using this instead of raw integer number. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_1200@{CUSERIAL\_BAUDRATE\_1200}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_1200@{CUSERIAL\_BAUDRATE\_1200}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a1f13fe5b6351636e54d4499e2cfa83d0}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a1f13fe5b6351636e54d4499e2cfa83d0}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+1200&1200 bods \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_2400@{CUSERIAL\_BAUDRATE\_2400}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_2400@{CUSERIAL\_BAUDRATE\_2400}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a49eefb27a0a474138d3a5385ff59a577}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a49eefb27a0a474138d3a5385ff59a577}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+2400&2400 bods \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_4800@{CUSERIAL\_BAUDRATE\_4800}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_4800@{CUSERIAL\_BAUDRATE\_4800}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a78715dec59ea65ac2580a2a4d12fef53}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a78715dec59ea65ac2580a2a4d12fef53}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+4800&4800 bods \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_9600@{CUSERIAL\_BAUDRATE\_9600}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_9600@{CUSERIAL\_BAUDRATE\_9600}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+9600&9600 bods \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_19200@{CUSERIAL\_BAUDRATE\_19200}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_19200@{CUSERIAL\_BAUDRATE\_19200}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ae16c182d906a4adfe4bd47db189ca946}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ae16c182d906a4adfe4bd47db189ca946}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+19200&19200 bods \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_38400@{CUSERIAL\_BAUDRATE\_38400}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_38400@{CUSERIAL\_BAUDRATE\_38400}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a2bf907b7cc99a0980d7b5bf06612e08b}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a2bf907b7cc99a0980d7b5bf06612e08b}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+38400&38400 bods \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_57600@{CUSERIAL\_BAUDRATE\_57600}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_57600@{CUSERIAL\_BAUDRATE\_57600}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a8c92f1e77a44ef20263ae5e22202a715}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a8c92f1e77a44ef20263ae5e22202a715}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+57600&57600 bods \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_115200@{CUSERIAL\_BAUDRATE\_115200}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_115200@{CUSERIAL\_BAUDRATE\_115200}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a86039cb38ffecda75c7ca2b52f04213c}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a86039cb38ffecda75c7ca2b52f04213c}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+115200&115200 bods \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648}\label{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648}} 
+\index{cuserial.h@{cuserial.h}!cuserial\_status\_t@{cuserial\_status\_t}}
+\index{cuserial\_status\_t@{cuserial\_status\_t}!cuserial.h@{cuserial.h}}
+\doxysubsubsection{\texorpdfstring{cuserial\_status\_t}{cuserial\_status\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648}{cuserial\+\_\+status\+\_\+t}}}
+
+
+
+Status/error codes. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_NONE@{CUSERIAL\_NONE}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_NONE@{CUSERIAL\_NONE}}}\mbox{\Hypertarget{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648a5b3e607e56e018c5226de9f9edfdc633}\label{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648a5b3e607e56e018c5226de9f9edfdc633}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+N\+O\+NE&Actually, not handled error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_NULL\_ARGUMENT@{CUSERIAL\_NULL\_ARGUMENT}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_NULL\_ARGUMENT@{CUSERIAL\_NULL\_ARGUMENT}}}\mbox{\Hypertarget{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648af59df160258fe79f3b80de9e8f5cc007}\label{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648af59df160258fe79f3b80de9e8f5cc007}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+N\+U\+L\+L\+\_\+\+A\+R\+G\+U\+M\+E\+NT&If you pass null \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_INVALID\_PORT@{CUSERIAL\_INVALID\_PORT}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_INVALID\_PORT@{CUSERIAL\_INVALID\_PORT}}}\mbox{\Hypertarget{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648a4c75894522e3c1d8f2c0eab524f9c3d2}\label{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648a4c75894522e3c1d8f2c0eab524f9c3d2}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+O\+RT&Cannot connect to the serial port. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_OK@{CUSERIAL\_OK}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_OK@{CUSERIAL\_OK}}}\mbox{\Hypertarget{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648aa095bfda29aa178c45e8cf9f5af425a8}\label{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648aa095bfda29aa178c45e8cf9f5af425a8}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+OK&No error. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cuserial_8h_ab539d7e06dfea8578861193fa1a6f0ef}\label{cuserial_8h_ab539d7e06dfea8578861193fa1a6f0ef}} 
+\index{cuserial.h@{cuserial.h}!cuserial\_check\_baudrate@{cuserial\_check\_baudrate}}
+\index{cuserial\_check\_baudrate@{cuserial\_check\_baudrate}!cuserial.h@{cuserial.h}}
+\doxysubsubsection{\texorpdfstring{cuserial\_check\_baudrate()}{cuserial\_check\_baudrate()}}
+{\footnotesize\ttfamily int cuserial\+\_\+check\+\_\+baudrate (\begin{DoxyParamCaption}\item[{int}]{baudrate }\end{DoxyParamCaption})}
+
+
+
+Checks if baudrate is supported (one of the cuserial\+\_\+baudrate\+\_\+t enum) 
+
+\begin{DoxyReturn}{Returns}
+0 if success, otherwise -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cuserial_8h_adf669d2573ab8a214f5d7b264ee8e64d}\label{cuserial_8h_adf669d2573ab8a214f5d7b264ee8e64d}} 
+\index{cuserial.h@{cuserial.h}!cuserial\_check\_port@{cuserial\_check\_port}}
+\index{cuserial\_check\_port@{cuserial\_check\_port}!cuserial.h@{cuserial.h}}
+\doxysubsubsection{\texorpdfstring{cuserial\_check\_port()}{cuserial\_check\_port()}}
+{\footnotesize\ttfamily int cuserial\+\_\+check\+\_\+port (\begin{DoxyParamCaption}\item[{char}]{port\mbox{[}\+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+S\+T\+R\+I\+N\+G\+\_\+\+M\+A\+X\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Checks if specified port is avaliable to connect. 
+
+\begin{DoxyReturn}{Returns}
+0 if success, otherwise -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cuserial_8h_a6fed9d44150d8d87f67e7a33606676a9}\label{cuserial_8h_a6fed9d44150d8d87f67e7a33606676a9}} 
+\index{cuserial.h@{cuserial.h}!cuserial\_connect@{cuserial\_connect}}
+\index{cuserial\_connect@{cuserial\_connect}!cuserial.h@{cuserial.h}}
+\doxysubsubsection{\texorpdfstring{cuserial\_connect()}{cuserial\_connect()}}
+{\footnotesize\ttfamily int cuserial\+\_\+connect (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}} $\ast$}]{serial,  }\item[{enum \mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648}{cuserial\+\_\+status\+\_\+t}} $\ast$}]{status }\end{DoxyParamCaption})}
+
+
+
+Establish serial port connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial} & Pointer to configured cuserail handle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if success, otherwise -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cuserial_8h_ae296c4140ec00d56d45403dfeed96b2b}\label{cuserial_8h_ae296c4140ec00d56d45403dfeed96b2b}} 
+\index{cuserial.h@{cuserial.h}!cuserial\_read@{cuserial\_read}}
+\index{cuserial\_read@{cuserial\_read}!cuserial.h@{cuserial.h}}
+\doxysubsubsection{\texorpdfstring{cuserial\_read()}{cuserial\_read()}}
+{\footnotesize\ttfamily int cuserial\+\_\+read (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}} $\ast$}]{serial,  }\item[{void $\ast$}]{bytes,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Read data from serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial} & Connection handle \\
+\hline
+{\em bytes} & Output bytes ptr, need to be pre-\/allocated. \\
+\hline
+{\em size} & Size of data-\/to-\/read in bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Count of actually read bytes if success, otherwise -\/1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{cuserial_8h_a1fc8432513594456a45e7f1b857c1816}\label{cuserial_8h_a1fc8432513594456a45e7f1b857c1816}} 
+\index{cuserial.h@{cuserial.h}!cuserial\_write@{cuserial\_write}}
+\index{cuserial\_write@{cuserial\_write}!cuserial.h@{cuserial.h}}
+\doxysubsubsection{\texorpdfstring{cuserial\_write()}{cuserial\_write()}}
+{\footnotesize\ttfamily int cuserial\+\_\+write (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}} $\ast$}]{serial,  }\item[{const void $\ast$}]{bytes,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Write data to serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial} & Connection handle \\
+\hline
+{\em bytes} & Data to send \\
+\hline
+{\em size} & Size of data in bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Count of sent bytes if succes, otherwise -\/1 
+\end{DoxyReturn}

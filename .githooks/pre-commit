@@ -1,0 +1,6 @@
+#!/bin/sh
+
+doxygen
+git add ./docs
+
+exit 0
