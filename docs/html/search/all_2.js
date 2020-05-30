@@ -21,5 +21,6 @@ var searchData=
   ['cuserial_5fread_20',['cuserial_read',['../cuserial_8h.html#ae296c4140ec00d56d45403dfeed96b2b',1,'cuserial.h']]],
   ['cuserial_5fstatus_5ft_21',['cuserial_status_t',['../cuserial_8h.html#a840328a468ccfd1a25f05a9582a6a648',1,'cuserial.h']]],
   ['cuserial_5ft_22',['cuserial_t',['../structcuserial__t.html',1,'']]],
-  ['cuserial_5fwrite_23',['cuserial_write',['../cuserial_8h.html#a1fc8432513594456a45e7f1b857c1816',1,'cuserial.h']]]
+  ['cuserial_5fwrite_23',['cuserial_write',['../cuserial_8h.html#a1fc8432513594456a45e7f1b857c1816',1,'cuserial.h']]],
+  ['cuserial_24',['cuserial',['../md__readme.html',1,'']]]
 ];

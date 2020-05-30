@@ -1,0 +1,34 @@
+One-\/header C library for serial port IO.
+
+The master is hosted on github\+: \href{https://github.com/ColumbusUtrigas/cuserial}{\texttt{ https\+://github.\+com/\+Columbus\+Utrigas/cuserial}}\hypertarget{md__readme_autotoc_md1}{}\doxysection{Using}\label{md__readme_autotoc_md1}
+All you need is including {\bfseries{\mbox{\hyperlink{cuserial_8h}{cuserial.\+h}}}} in your project! Library does not require any compilation flags, other libraries or tons of code.\hypertarget{md__readme_autotoc_md2}{}\doxysubsection{Examples}\label{md__readme_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct }\mbox{\hyperlink{structcuserial__t}{cuserial\_t}} serial;}
+\DoxyCodeLine{\textcolor{keyword}{enum} \mbox{\hyperlink{cuserial_8h_a840328a468ccfd1a25f05a9582a6a648}{cuserial\_status\_t}} status;}
+\DoxyCodeLine{memset(\&serial, 0, \textcolor{keyword}{sizeof}(serial));}
+\DoxyCodeLine{}
+\DoxyCodeLine{serial.baudrate = \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a}{CUSERIAL\_BAUDRATE\_9600}};}
+\DoxyCodeLine{serial.timeout = 1000;}
+\DoxyCodeLine{strcpy(serial.port, \textcolor{stringliteral}{"COM5"});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{char} buf;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{cuserial_8h_a6fed9d44150d8d87f67e7a33606676a9}{cuserial\_connect}}(\&serial, \&status);}
+\DoxyCodeLine{\mbox{\hyperlink{cuserial_8h_a1fc8432513594456a45e7f1b857c1816}{cuserial\_write}}(\&serial, \textcolor{stringliteral}{"1"}, 1);}
+\DoxyCodeLine{\mbox{\hyperlink{cuserial_8h_ae296c4140ec00d56d45403dfeed96b2b}{cuserial\_read}}(\&serial, \&buf, 1);}
+\DoxyCodeLine{\mbox{\hyperlink{cuserial_8h_a9e55dd102961685a7fd535108711a843}{cuserial\_disconnect}}(\&serial);}
+\DoxyCodeLine{}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"\%c\(\backslash\)n"}, buf);}
+\end{DoxyCode}
+\hypertarget{md__readme_autotoc_md3}{}\doxysection{Documentation}\label{md__readme_autotoc_md3}
+To generate documentation of llibrary use 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{doxygen}
+\end{DoxyCode}
+
+
+This command will generate documentation in docs
+
+Or you can visit Github Wiki of library\+: T\+O\+DO\hypertarget{md__readme_autotoc_md4}{}\doxysection{Contributing}\label{md__readme_autotoc_md4}
+T\+O\+DO 
