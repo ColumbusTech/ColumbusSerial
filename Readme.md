@@ -15,7 +15,7 @@ memset(&serial, 0, sizeof(serial));
 
 serial.baudrate = CUSERIAL_BAUDRATE_9600;
 serial.timeout = 1000;
-strcpy(serial.port, "COM5");
+strcpy(serial.port, "COM5"); // or /dev/ttyS5 on Linux
 
 char buf;
 

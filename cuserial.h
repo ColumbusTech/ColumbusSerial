@@ -10,8 +10,11 @@
 	#include <stdlib.h>
 	typedef HANDLE __cuserial_native_handle;
 #elif defined(__linux__)
+	#include <unistd.h>
+	#include <fcntl.h>
+	#include <termios.h>
+#include <string.h>
 	typedef int __cuserial_native_handle;
-#error Unsupported platform
 #else
 #error Unsupported platform
 #endif
@@ -24,14 +27,16 @@
 */
 enum cuserial_baudrate_t
 {
-	CUSERIAL_BAUDRATE_1200 = 1200, //!< 1200 bods
-	CUSERIAL_BAUDRATE_2400 = 2400, //!< 2400 bods
-	CUSERIAL_BAUDRATE_4800 = 4800, //!< 4800 bods
-	CUSERIAL_BAUDRATE_9600 = 9600, //!< 9600 bods
-	CUSERIAL_BAUDRATE_19200 = 19200, //!< 19200 bods
-	CUSERIAL_BAUDRATE_38400 = 38400, //!< 38400 bods
-	CUSERIAL_BAUDRATE_57600 = 57600, //!< 57600 bods
-	CUSERIAL_BAUDRATE_115200 = 115200, //!< 115200 bods
+	CUSERIAL_BAUDRATE_300 = 300, //!< 300 bauds
+	CUSERIAL_BAUDRATE_600 = 600, //!< 600 bauds
+	CUSERIAL_BAUDRATE_1200 = 1200, //!< 1200 bauds
+	CUSERIAL_BAUDRATE_2400 = 2400, //!< 2400 bauds
+	CUSERIAL_BAUDRATE_4800 = 4800, //!< 4800 bauds
+	CUSERIAL_BAUDRATE_9600 = 9600, //!< 9600 bauds
+	CUSERIAL_BAUDRATE_19200 = 19200, //!< 19200 bauds
+	CUSERIAL_BAUDRATE_38400 = 38400, //!< 38400 bauds
+	CUSERIAL_BAUDRATE_57600 = 57600, //!< 57600 bauds
+	CUSERIAL_BAUDRATE_115200 = 115200, //!< 115200 bauds
 };
 
 /**
@@ -226,14 +231,16 @@ int cuserial_connect(struct cuserial_t* serial, enum cuserial_status_t* status)
 	{
 		int baud_rates[] =
 		{
-			1200,
-			2400,
-			4800,
-			9600,
-			19200,
-			38400,
-			57600,
-			115200
+			CUSERIAL_BAUDRATE_300,
+			CUSERIAL_BAUDRATE_600,
+			CUSERIAL_BAUDRATE_1200,
+			CUSERIAL_BAUDRATE_2400,
+			CUSERIAL_BAUDRATE_4800,
+			CUSERIAL_BAUDRATE_9600,
+			CUSERIAL_BAUDRATE_19200,
+			CUSERIAL_BAUDRATE_38400,
+			CUSERIAL_BAUDRATE_57600,
+			CUSERIAL_BAUDRATE_115200
 		};
 
 		int len = sizeof(baud_rates) / sizeof(baud_rates[0]);
@@ -253,6 +260,106 @@ int cuserial_connect(struct cuserial_t* serial, enum cuserial_status_t* status)
 			return -1;
 
 		CloseHandle(tmp);
+		return 0;
+	}
+
+#elif defined(__linux__)
+	int __cuserial_convert_baud_internal_unix(int baudrate)
+	{
+		switch (baudrate)
+		{
+		case CUSERIAL_BAUDRATE_300: return B300;
+		case CUSERIAL_BAUDRATE_600: return B600;
+		case CUSERIAL_BAUDRATE_1200: return B1200;
+		case CUSERIAL_BAUDRATE_2400: return B2400;
+		case CUSERIAL_BAUDRATE_4800: return B4800;
+		case CUSERIAL_BAUDRATE_9600: return B9600;
+		case CUSERIAL_BAUDRATE_19200: return B19200;
+		case CUSERIAL_BAUDRATE_38400: return B38400;
+		case CUSERIAL_BAUDRATE_57600: return B57600;
+		case CUSERIAL_BAUDRATE_115200: return B115200;
+		}
+
+		return -1;
+	}
+
+	int __cuserial_connect_internal(struct cuserial_t* serial, enum cuserial_status_t* status)
+	{
+		serial->_handle = open(serial->port, O_RDWR | O_NONBLOCK | O_NDELAY);
+		if (serial->_handle < 0)
+			return -1;
+
+		struct termios config;
+		memset(&config, 0, sizeof(config));
+
+		if (tcgetattr(serial->_handle, &config) != 0)
+		{
+			cuserial_disconnect(serial);
+			return -1;
+		}
+
+		int baudrate = __cuserial_convert_baud_internal_unix(serial->baudrate);
+
+		cfsetospeed(&config, baudrate);
+		cfsetispeed(&config, baudrate);
+
+		config.c_cflag &= ~PARENB;
+		config.c_cflag &= ~CSTOPB;
+		config.c_cflag &= ~CSIZE;
+		config.c_cflag |= CS8;
+		config.c_cflag &= ~CRTSCTS;
+		config.c_lflag = 0;
+		config.c_oflag = 0;
+		config.c_cc[VMIN] = 0;
+		config.c_cc[VTIME] = 5;
+
+		config.c_cflag |= CREAD | CLOCAL;
+		config.c_iflag &= ~(IXON | IXOFF | IXANY);
+		config.c_iflag &= ~(ICANON | ECHO | ECHOE | ISIG);
+		config.c_oflag &= ~OPOST;
+
+		tcflush(serial->_handle, TCIFLUSH);
+
+		if (tcsetattr(serial->_handle, TCSANOW, &config) != 0)
+		{
+			cuserial_disconnect(serial);
+			return -1;
+		}
+
+		return 0;
+	}
+
+	void cuserial_disconnect(struct cuserial_t* serial)
+	{
+		close(serial->_handle);
+		serial->_handle = -1;
+	}
+
+	int cuserial_write(struct cuserial_t* serial, const void* bytes, int size)
+	{
+		if (serial->_handle < 0)
+			return -1;
+
+		int written = write(serial->_handle, bytes, size);
+		return written;
+	}
+
+	int cuserial_read(struct cuserial_t* serial, void* bytes, int size)
+	{
+		if (serial->_handle < 0)
+			return -1;
+
+		int rd = read(serial->_handle, bytes, size);
+		return rd;
+	}
+
+	int cuserial_check_baudrate(int baudrate)
+	{
+		return __cuserial_convert_baud_internal_unix(baudrate) == -1 ? -1 : 0;
+	}
+
+	int cuserial_check_port(char port[CUSERIAL_STRING_MAX])
+	{
 		return 0;
 	}
 #endif

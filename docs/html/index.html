@@ -79,7 +79,7 @@ Examples</h2>
 <div class="line"> </div>
 <div class="line">serial.baudrate = <a class="code" href="cuserial_8h.html#a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a">CUSERIAL_BAUDRATE_9600</a>;</div>
 <div class="line">serial.timeout = 1000;</div>
-<div class="line">strcpy(serial.port, <span class="stringliteral">&quot;COM5&quot;</span>);</div>
+<div class="line">strcpy(serial.port, <span class="stringliteral">&quot;COM5&quot;</span>); <span class="comment">// or /dev/ttyS5 on Linux</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">char</span> buf;</div>
 <div class="line"> </div>
@@ -100,10 +100,10 @@ Contributing</h1>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <div class="ttc" id="acuserial_8h_html_a1fc8432513594456a45e7f1b857c1816"><div class="ttname"><a href="cuserial_8h.html#a1fc8432513594456a45e7f1b857c1816">cuserial_write</a></div><div class="ttdeci">int cuserial_write(struct cuserial_t *serial, const void *bytes, int size)</div><div class="ttdoc">Write data to serial port.</div></div>
-<div class="ttc" id="astructcuserial__t_html"><div class="ttname"><a href="structcuserial__t.html">cuserial_t</a></div><div class="ttdoc">Serial port connection handle. It's self-contained and have all it needs without any global state....</div><div class="ttdef"><b>Definition:</b> cuserial.h:57</div></div>
-<div class="ttc" id="acuserial_8h_html_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a"><div class="ttname"><a href="cuserial_8h.html#a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a">CUSERIAL_BAUDRATE_9600</a></div><div class="ttdeci">@ CUSERIAL_BAUDRATE_9600</div><div class="ttdoc">9600 bods</div><div class="ttdef"><b>Definition:</b> cuserial.h:30</div></div>
-<div class="ttc" id="acuserial_8h_html_a840328a468ccfd1a25f05a9582a6a648"><div class="ttname"><a href="cuserial_8h.html#a840328a468ccfd1a25f05a9582a6a648">cuserial_status_t</a></div><div class="ttdeci">cuserial_status_t</div><div class="ttdoc">Status/error codes.</div><div class="ttdef"><b>Definition:</b> cuserial.h:41</div></div>
-<div class="ttc" id="acuserial_8h_html_a6fed9d44150d8d87f67e7a33606676a9"><div class="ttname"><a href="cuserial_8h.html#a6fed9d44150d8d87f67e7a33606676a9">cuserial_connect</a></div><div class="ttdeci">int cuserial_connect(struct cuserial_t *serial, enum cuserial_status_t *status)</div><div class="ttdoc">Establish serial port connection.</div><div class="ttdef"><b>Definition:</b> cuserial.h:113</div></div>
+<div class="ttc" id="astructcuserial__t_html"><div class="ttname"><a href="structcuserial__t.html">cuserial_t</a></div><div class="ttdoc">Serial port connection handle. It's self-contained and have all it needs without any global state....</div><div class="ttdef"><b>Definition:</b> cuserial.h:62</div></div>
+<div class="ttc" id="acuserial_8h_html_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a"><div class="ttname"><a href="cuserial_8h.html#a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a">CUSERIAL_BAUDRATE_9600</a></div><div class="ttdeci">@ CUSERIAL_BAUDRATE_9600</div><div class="ttdoc">9600 bauds</div><div class="ttdef"><b>Definition:</b> cuserial.h:35</div></div>
+<div class="ttc" id="acuserial_8h_html_a840328a468ccfd1a25f05a9582a6a648"><div class="ttname"><a href="cuserial_8h.html#a840328a468ccfd1a25f05a9582a6a648">cuserial_status_t</a></div><div class="ttdeci">cuserial_status_t</div><div class="ttdoc">Status/error codes.</div><div class="ttdef"><b>Definition:</b> cuserial.h:46</div></div>
+<div class="ttc" id="acuserial_8h_html_a6fed9d44150d8d87f67e7a33606676a9"><div class="ttname"><a href="cuserial_8h.html#a6fed9d44150d8d87f67e7a33606676a9">cuserial_connect</a></div><div class="ttdeci">int cuserial_connect(struct cuserial_t *serial, enum cuserial_status_t *status)</div><div class="ttdoc">Establish serial port connection.</div><div class="ttdef"><b>Definition:</b> cuserial.h:118</div></div>
 <div class="ttc" id="acuserial_8h_html_ae296c4140ec00d56d45403dfeed96b2b"><div class="ttname"><a href="cuserial_8h.html#ae296c4140ec00d56d45403dfeed96b2b">cuserial_read</a></div><div class="ttdeci">int cuserial_read(struct cuserial_t *serial, void *bytes, int size)</div><div class="ttdoc">Read data from serial port.</div></div>
 <div class="ttc" id="acuserial_8h_html_a9e55dd102961685a7fd535108711a843"><div class="ttname"><a href="cuserial_8h.html#a9e55dd102961685a7fd535108711a843">cuserial_disconnect</a></div><div class="ttdeci">void cuserial_disconnect(struct cuserial_t *serial)</div><div class="ttdoc">Disconnect serial port.</div></div>
 <!-- start footer part -->

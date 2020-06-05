@@ -18,13 +18,16 @@ struct \mbox{\hyperlink{structcuserial__t}{cuserial\+\_\+t}}
 \begin{DoxyCompactItemize}
 \item 
 enum \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8}{cuserial\+\_\+baudrate\+\_\+t}} \{ \newline
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a97ac64d8a8e0d13c566046ba24e499d4}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+300}} = 300, 
+\mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ad64699ffc38b1d35f259517df07bc022}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+600}} = 600, 
 \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a1f13fe5b6351636e54d4499e2cfa83d0}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+1200}} = 1200, 
 \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a49eefb27a0a474138d3a5385ff59a577}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+2400}} = 2400, 
+\newline
 \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a78715dec59ea65ac2580a2a4d12fef53}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+4800}} = 4800, 
 \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+9600}} = 9600, 
-\newline
 \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ae16c182d906a4adfe4bd47db189ca946}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+19200}} = 19200, 
 \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a2bf907b7cc99a0980d7b5bf06612e08b}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+38400}} = 38400, 
+\newline
 \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a8c92f1e77a44ef20263ae5e22202a715}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+57600}} = 57600, 
 \mbox{\hyperlink{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a86039cb38ffecda75c7ca2b52f04213c}{C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+115200}} = 115200
  \}
@@ -65,36 +68,44 @@ int \mbox{\hyperlink{cuserial_8h_adf669d2573ab8a214f5d7b264ee8e64d}{cuserial\+\_
 Baud rates aliases for safety, prefer using this instead of raw integer number. 
 
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_300@{CUSERIAL\_BAUDRATE\_300}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_300@{CUSERIAL\_BAUDRATE\_300}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a97ac64d8a8e0d13c566046ba24e499d4}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a97ac64d8a8e0d13c566046ba24e499d4}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+300&300 bauds \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_600@{CUSERIAL\_BAUDRATE\_600}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_600@{CUSERIAL\_BAUDRATE\_600}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ad64699ffc38b1d35f259517df07bc022}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ad64699ffc38b1d35f259517df07bc022}} 
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+600&600 bauds \\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_1200@{CUSERIAL\_BAUDRATE\_1200}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_1200@{CUSERIAL\_BAUDRATE\_1200}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a1f13fe5b6351636e54d4499e2cfa83d0}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a1f13fe5b6351636e54d4499e2cfa83d0}} 
-C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+1200&1200 bods \\
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+1200&1200 bauds \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_2400@{CUSERIAL\_BAUDRATE\_2400}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_2400@{CUSERIAL\_BAUDRATE\_2400}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a49eefb27a0a474138d3a5385ff59a577}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a49eefb27a0a474138d3a5385ff59a577}} 
-C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+2400&2400 bods \\
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+2400&2400 bauds \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_4800@{CUSERIAL\_BAUDRATE\_4800}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_4800@{CUSERIAL\_BAUDRATE\_4800}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a78715dec59ea65ac2580a2a4d12fef53}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a78715dec59ea65ac2580a2a4d12fef53}} 
-C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+4800&4800 bods \\
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+4800&4800 bauds \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_9600@{CUSERIAL\_BAUDRATE\_9600}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_9600@{CUSERIAL\_BAUDRATE\_9600}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ab172f2397777aeabfbb185dfd96fc27a}} 
-C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+9600&9600 bods \\
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+9600&9600 bauds \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_19200@{CUSERIAL\_BAUDRATE\_19200}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_19200@{CUSERIAL\_BAUDRATE\_19200}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ae16c182d906a4adfe4bd47db189ca946}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8ae16c182d906a4adfe4bd47db189ca946}} 
-C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+19200&19200 bods \\
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+19200&19200 bauds \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_38400@{CUSERIAL\_BAUDRATE\_38400}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_38400@{CUSERIAL\_BAUDRATE\_38400}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a2bf907b7cc99a0980d7b5bf06612e08b}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a2bf907b7cc99a0980d7b5bf06612e08b}} 
-C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+38400&38400 bods \\
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+38400&38400 bauds \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_57600@{CUSERIAL\_BAUDRATE\_57600}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_57600@{CUSERIAL\_BAUDRATE\_57600}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a8c92f1e77a44ef20263ae5e22202a715}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a8c92f1e77a44ef20263ae5e22202a715}} 
-C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+57600&57600 bods \\
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+57600&57600 bauds \\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CUSERIAL\_BAUDRATE\_115200@{CUSERIAL\_BAUDRATE\_115200}!cuserial.h@{cuserial.h}}\index{cuserial.h@{cuserial.h}!CUSERIAL\_BAUDRATE\_115200@{CUSERIAL\_BAUDRATE\_115200}}}\mbox{\Hypertarget{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a86039cb38ffecda75c7ca2b52f04213c}\label{cuserial_8h_a82255bfda8cfcec03b271e9e202cb2e8a86039cb38ffecda75c7ca2b52f04213c}} 
-C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+115200&115200 bods \\
+C\+U\+S\+E\+R\+I\+A\+L\+\_\+\+B\+A\+U\+D\+R\+A\+T\+E\+\_\+115200&115200 bauds \\
 \hline
 
 \end{DoxyEnumFields}
